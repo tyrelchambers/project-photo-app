@@ -6,7 +6,13 @@ export function Header() {
   const { colors } = useTheme();
 
   return (
-    <HStack py="16" px="4" justifyContent="space-between" alignItems="center">
+    <HStack
+      pt="16"
+      pb="6"
+      px="4"
+      justifyContent="space-between"
+      alignItems="center"
+    >
       <HStack>
         <Text fontWeight="bold">Project-photo-app</Text>
       </HStack>
