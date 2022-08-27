@@ -12,7 +12,6 @@ import {
   VStack,
 } from "native-base";
 import { PostActionBar } from "../components/PostActionBar";
-import { Header } from "../layouts/header";
 
 const posts = [
   {

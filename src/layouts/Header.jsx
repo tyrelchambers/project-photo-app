@@ -1,8 +1,8 @@
 import { HStack, Icon, IconButton, Text, useTheme } from "native-base";
 import React from "react";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
-export function Header() {
+export function Header({ navigation }) {
   const { colors } = useTheme();
 
   return (
@@ -27,8 +27,8 @@ export function Header() {
             />
           }
         />
-
         <IconButton
+          onPress={() => navigation.navigate("Messages")}
           icon={
             <Icon
               as={Ionicons}
