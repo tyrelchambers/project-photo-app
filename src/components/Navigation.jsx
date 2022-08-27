@@ -10,6 +10,8 @@ import { Profile } from "../screens/Profile";
 import { ProfileHeader } from "./ProfileHeader";
 import { DMScreen } from "../screens/DMScreen";
 import { DMHeader } from "../layouts/DMHeader";
+import { Message } from "../screens/Message";
+import { MessageHeader } from "../layouts/MessageHeader";
 
 const HomeStack = createNativeStackNavigator();
 
@@ -82,6 +84,17 @@ export function Navigation() {
           component={DMScreen}
           options={{
             header: ({ navigation }) => <DMHeader navigation={navigation} />,
+            contentStyle: { backgroundColor: "white" },
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Message"
+          component={Message}
+          options={{
+            header: ({ navigation }) => (
+              <MessageHeader navigation={navigation} />
+            ),
             contentStyle: { backgroundColor: "white" },
           }}
         />

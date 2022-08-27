@@ -3,6 +3,7 @@ import {
   HStack,
   Icon,
   Input,
+  Pressable,
   ScrollView,
   Text,
   VStack,
@@ -54,7 +55,7 @@ const messages = [
   },
 ];
 
-export function DMScreen() {
+export function DMScreen({ navigation }) {
   return (
     <HStack>
       <ScrollView mx="3">
@@ -82,33 +83,42 @@ export function DMScreen() {
             Messages
           </Text>
           {messages.map((m, i) => (
-            <HStack key={i} my="3">
-              <Avatar
-                source={{
-                  uri: m.user.avatar,
-                }}
-                mr="2"
-              />
+            <Pressable
+              onPress={() =>
+                navigation.navigate("Message", {
+                  id: "some-id",
+                })
+              }
+              key={i}
+            >
+              <HStack my="3">
+                <Avatar
+                  source={{
+                    uri: m.user.avatar,
+                  }}
+                  mr="4"
+                />
 
-              <VStack flex="1">
-                <Text fontWeight="bold">{m.user.name}</Text>
-                <HStack flex="1" alignItems="center">
-                  <Text numberOfLines={1} color="gray.500" flex="1">
-                    {m.preview}
-                  </Text>
-                  <Icon
-                    as={Ionicons}
-                    name="ellipse"
-                    size="2xs"
-                    px="3"
-                    color="gray.300"
-                  />
-                  <Text color="gray.500">
-                    {formatDistanceToNowStrict(new Date(m.sent_at))}
-                  </Text>
-                </HStack>
-              </VStack>
-            </HStack>
+                <VStack flex="1">
+                  <Text fontWeight="bold">{m.user.name}</Text>
+                  <HStack flex="1" alignItems="center">
+                    <Text numberOfLines={1} color="gray.500" flex="1">
+                      {m.preview}
+                    </Text>
+                    <Icon
+                      as={Ionicons}
+                      name="ellipse"
+                      size="2xs"
+                      px="3"
+                      color="gray.300"
+                    />
+                    <Text color="gray.500">
+                      {formatDistanceToNowStrict(new Date(m.sent_at))}
+                    </Text>
+                  </HStack>
+                </VStack>
+              </HStack>
+            </Pressable>
           ))}
         </VStack>
       </ScrollView>
