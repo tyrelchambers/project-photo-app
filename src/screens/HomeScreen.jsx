@@ -1,17 +1,5 @@
-import { format } from "date-fns";
-import {
-  AspectRatio,
-  Box,
-  HStack,
-  Icon,
-  Image,
-  ScrollView,
-  Spacer,
-  Text,
-  useTheme,
-  VStack,
-} from "native-base";
-import { PostActionBar } from "../components/PostActionBar";
+import { ScrollView, VStack } from "native-base";
+import { Post } from "../components/Post";
 
 const posts = [
   {
@@ -93,47 +81,16 @@ const posts = [
   },
 ];
 export function HomeScreen() {
-  const { colors } = useTheme();
-
   return (
     <ScrollView
       maxW="full"
       _contentContainerStyle={{
         mb: "4",
-        minW: "72",
       }}
     >
       <VStack flex="1">
         {posts.map((post, i) => (
-          <Box key={i} my="6">
-            <Text fontWeight="bold" px="4" mb="3">
-              {post.user.username}
-            </Text>
-
-            <AspectRatio
-              ratio={{
-                base: 4 / 3,
-                md: 16 / 9,
-              }}
-              width="full"
-            >
-              <Image
-                source={{
-                  uri: post.imageUrl,
-                }}
-                alt="image"
-              />
-            </AspectRatio>
-            <VStack px="4">
-              <PostActionBar />
-              <VStack>
-                <Text color={colors.gray[700]}>{post.caption}</Text>
-                <Text mt="2" color={colors.gray[500]} fontSize="xs">
-                  {format(new Date(post.created), "MMMM do")}
-                </Text>
-              </VStack>
-            </VStack>
-          </Box>
+          <Post post={post} key={i} />
         ))}
       </VStack>
     </ScrollView>

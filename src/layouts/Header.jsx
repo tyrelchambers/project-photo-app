@@ -6,15 +6,11 @@ export function Header({ navigation }) {
   const { colors } = useTheme();
 
   return (
-    <HStack
-      pt="16"
-      pb="6"
-      px="4"
-      justifyContent="space-between"
-      alignItems="center"
-    >
+    <HStack pt="16" px="4" justifyContent="space-between" alignItems="center">
       <HStack>
-        <Text fontWeight="bold">Project-photo-app</Text>
+        <Text fontWeight="bold" color={colors.white}>
+          Project-photo-app
+        </Text>
       </HStack>
 
       <HStack>
@@ -23,7 +19,7 @@ export function Header({ navigation }) {
             <Icon
               as={Ionicons}
               name="notifications-outline"
-              color={colors.gray[700]}
+              color={colors.gray[100]}
             />
           }
         />
@@ -33,7 +29,7 @@ export function Header({ navigation }) {
             <Icon
               as={Ionicons}
               name="chatbubble-ellipses-outline"
-              color={colors.gray[700]}
+              color={colors.gray[100]}
             />
           }
         />

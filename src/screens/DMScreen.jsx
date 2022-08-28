@@ -64,7 +64,7 @@ export function DMScreen({ navigation }) {
           px="3"
           borderWidth="0"
           fontSize="14"
-          backgroundColor="gray.200"
+          backgroundColor="gray.800"
           borderRadius="lg"
           flex="1"
           InputLeftElement={
@@ -79,7 +79,7 @@ export function DMScreen({ navigation }) {
         />
 
         <VStack mt="4">
-          <Text fontWeight="bold" mb="2">
+          <Text fontWeight="bold" mb="2" color="gray.100">
             Messages
           </Text>
           {messages.map((m, i) => (
@@ -100,9 +100,11 @@ export function DMScreen({ navigation }) {
                 />
 
                 <VStack flex="1">
-                  <Text fontWeight="bold">{m.user.name}</Text>
+                  <Text fontWeight="bold" color="gray.100">
+                    {m.user.name}
+                  </Text>
                   <HStack flex="1" alignItems="center">
-                    <Text numberOfLines={1} color="gray.500" flex="1">
+                    <Text numberOfLines={1} color="gray.300" flex="1">
                       {m.preview}
                     </Text>
                     <Icon

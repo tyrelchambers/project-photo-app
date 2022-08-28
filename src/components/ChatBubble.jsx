@@ -9,8 +9,8 @@ export function ChatBubble({ data }) {
     <HStack px="4" space="3">
       <Avatar source={{ uri: data.user.avatar }} />
       <Stack direction="column" space="2" flex="1">
-        <Box borderRadius="xl" backgroundColor="gray.100" p="3">
-          <Text color="gray.600">{data.body}</Text>
+        <Box borderRadius="xl" backgroundColor="gray.800" p="3">
+          <Text color="gray.200">{data.body}</Text>
         </Box>
         <Text color="gray.500" fontSize="xs">
           {format(new Date(data.created), "MMMM do")}
@@ -22,8 +22,8 @@ export function ChatBubble({ data }) {
   const Right = () => (
     <HStack px="4" space="3">
       <Stack direction="column" space="2" flex="1">
-        <Box borderRadius="xl" borderWidth="1" borderColor="gray.300" p="3">
-          <Text color="gray.500">{data.body}</Text>
+        <Box borderRadius="xl" borderWidth="1" borderColor="gray.600" p="3">
+          <Text color="gray.200">{data.body}</Text>
         </Box>
         <Text color="gray.500" fontSize="xs">
           {format(new Date(data.created), "MMMM do")}

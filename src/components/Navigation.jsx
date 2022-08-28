@@ -12,12 +12,15 @@ import { DMScreen } from "../screens/DMScreen";
 import { DMHeader } from "../layouts/DMHeader";
 import { Message } from "../screens/Message";
 import { MessageHeader } from "../layouts/MessageHeader";
+import { useTheme } from "native-base";
 
 const HomeStack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
 function HomeTabs() {
+  const { colors } = useTheme();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -35,11 +38,15 @@ function HomeTabs() {
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "black",
+        tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "gray",
         title: "",
+        tabBarStyle: {
+          paddingTop: 10,
+          backgroundColor: colors.gray[900],
+        },
       })}
-      sceneContainerStyle={{ backgroundColor: "white" }}
+      sceneContainerStyle={{ backgroundColor: colors.gray[900] }}
     >
       <Tab.Screen
         name="Home"
@@ -69,6 +76,7 @@ function HomeTabs() {
 }
 
 export function Navigation() {
+  const { colors } = useTheme();
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
@@ -84,7 +92,7 @@ export function Navigation() {
           component={DMScreen}
           options={{
             header: ({ navigation }) => <DMHeader navigation={navigation} />,
-            contentStyle: { backgroundColor: "white" },
+            contentStyle: { backgroundColor: colors.gray[900] },
           }}
         />
 
@@ -95,7 +103,7 @@ export function Navigation() {
             header: ({ navigation }) => (
               <MessageHeader navigation={navigation} />
             ),
-            contentStyle: { backgroundColor: "white" },
+            contentStyle: { backgroundColor: colors.gray[900] },
           }}
         />
       </HomeStack.Navigator>

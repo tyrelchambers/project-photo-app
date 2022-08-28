@@ -10,18 +10,18 @@ export function DMHeader({ navigation }) {
       px="6"
       alignItems="center"
       justifyContent="space-between"
-      backgroundColor="white"
+      backgroundColor="gray.900"
     >
       <HStack alignItems="center">
         <Icon
           as={Ionicons}
           name="chevron-back-outline"
           size="lg"
-          color="gray.800"
+          color="gray.100"
           mr="2"
           onPress={() => navigation.dispatch(CommonActions.goBack())}
         />
-        <Text fontSize="lg" fontWeight="bold" color="gray.800">
+        <Text fontSize="lg" fontWeight="bold" color="gray.100">
           Messages
         </Text>
       </HStack>
@@ -30,7 +30,7 @@ export function DMHeader({ navigation }) {
         <Icon
           as={Ionicons}
           name="add"
-          color="gray.800"
+          color="gray.100"
           fontWeight="bold"
           size="2xl"
         />

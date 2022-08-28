@@ -10,18 +10,18 @@ export function MessageHeader({ navigation }) {
       px="6"
       alignItems="center"
       justifyContent="space-between"
-      backgroundColor="white"
+      backgroundColor="gray.900"
     >
       <HStack alignItems="center">
         <Icon
           as={Ionicons}
           name="chevron-back-outline"
           size="lg"
-          color="gray.800"
+          color="gray.100"
           mr="2"
           onPress={() => navigation.dispatch(CommonActions.goBack())}
         />
-        <Text fontSize="lg" fontWeight="bold" color="gray.800">
+        <Text fontSize="lg" fontWeight="bold" color="gray.100">
           Tony Lombardi
         </Text>
       </HStack>
