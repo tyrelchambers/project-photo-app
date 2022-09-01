@@ -13,6 +13,7 @@ import { DMHeader } from "../layouts/DMHeader";
 import { Message } from "../screens/Message";
 import { MessageHeader } from "../layouts/MessageHeader";
 import { useTheme } from "native-base";
+import { Register } from "../screens/Register";
 
 const HomeStack = createNativeStackNavigator();
 
@@ -79,7 +80,7 @@ export function Navigation() {
   const { colors } = useTheme();
   return (
     <NavigationContainer>
-      <HomeStack.Navigator>
+      <HomeStack.Navigator initialRouteName="Register">
         <HomeStack.Screen
           name="Root_Home"
           component={HomeTabs}
@@ -103,6 +104,15 @@ export function Navigation() {
             header: ({ navigation }) => (
               <MessageHeader navigation={navigation} />
             ),
+            contentStyle: { backgroundColor: colors.gray[900] },
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Register"
+          component={Register}
+          options={{
+            headerShown: false,
             contentStyle: { backgroundColor: colors.gray[900] },
           }}
         />
