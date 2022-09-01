@@ -10,40 +10,38 @@ import {
   Text,
   VStack,
 } from "native-base";
+import React from "react";
 
-export function Register({ navigation }) {
+const Login = ({ navigation }) => {
   return (
     <VStack justifyContent="center" h="full">
       <VStack p="6">
         <Heading color="gray.100" size="2xl">
-          Register
+          Login
         </Heading>
         <Text color="gray.300" fontSize="xl">
-          Welcome to Mezz! Create an account and let's get started!
+          Welcome back to Mezz!
         </Text>
         <FormControl mt="6">
           <Stack space={5}>
             <Stack>
               <FormControl.Label>Email</FormControl.Label>
-              <Input variant="outline" p={2} color="gray.100" />
+              <Input variant="outline" p={2} />
             </Stack>
             <Stack>
               <FormControl.Label>Password</FormControl.Label>
               <Input variant="outline" p={2} color="gray.100" type="password" />
             </Stack>
-            <Stack>
-              <FormControl.Label>Confirm Password</FormControl.Label>
-              <Input variant="outline" p={2} color="gray.100" type="password" />
-            </Stack>
-            <Button backgroundColor="red.400">Sign up</Button>
+
+            <Button backgroundColor="red.400">Login</Button>
             <Box>
               <Text color="gray.300">
-                I have an account!{" "}
+                I don't have an account!{" "}
                 <Text
                   color="blue.300"
-                  onPress={() => navigation.navigate("Login")}
+                  onPress={() => navigation.navigate("Register")}
                 >
-                  Login{" "}
+                  Sign up{" "}
                 </Text>
               </Text>
             </Box>
@@ -53,4 +51,6 @@ export function Register({ navigation }) {
       </VStack>
     </VStack>
   );
-}
+};
+
+export default Login;

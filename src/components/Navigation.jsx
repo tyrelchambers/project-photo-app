@@ -14,6 +14,7 @@ import { Message } from "../screens/Message";
 import { MessageHeader } from "../layouts/MessageHeader";
 import { useTheme } from "native-base";
 import { Register } from "../screens/Register";
+import Login from "../screens/Login";
 
 const HomeStack = createNativeStackNavigator();
 
@@ -111,6 +112,15 @@ export function Navigation() {
         <HomeStack.Screen
           name="Register"
           component={Register}
+          options={{
+            headerShown: false,
+            contentStyle: { backgroundColor: colors.gray[900] },
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Login"
+          component={Login}
           options={{
             headerShown: false,
             contentStyle: { backgroundColor: colors.gray[900] },
