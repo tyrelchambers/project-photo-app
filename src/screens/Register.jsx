@@ -16,7 +16,7 @@ export function Register() {
           Register
         </Heading>
         <Text color="gray.300" fontSize="xl">
-          Welcome back to Mezz! Create an account and let's get started!
+          Welcome to Mezz! Create an account and let's get started!
         </Text>
         <FormControl mt="6">
           <Stack space={5}>
