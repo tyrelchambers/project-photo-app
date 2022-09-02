@@ -2,11 +2,13 @@ import { AspectRatio, Box, FlatList, Image, Text } from "native-base";
 import * as MediaLibrary from "expo-media-library";
 import { useEffect, useState } from "react";
 import { Pressable } from "react-native";
+import { useNewPostStore } from "../hooks/useNewPostStore";
 
 export function NewPost() {
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [photos, setPhotos] = useState([]);
   const [selectedImages, setSelectedImages] = useState([]);
+  const postStore = useNewPostStore();
 
   useEffect(() => {
     (async () => {
@@ -15,7 +17,7 @@ export function NewPost() {
       });
 
       setPhotos(allPhotos.assets);
-      setSelectedImages(allPhotos.assets[0]);
+      postStore.setImages(allPhotos.assets[0]);
     })();
   }, []);
 
@@ -25,7 +27,7 @@ export function NewPost() {
 
   const renderItem = ({ item }) => (
     <Pressable
-      onPress={() => setSelectedImages(item)}
+      onPress={() => postStore.setImages(item)}
       style={{
         borderColor: "gray.900",
         borderWidth: "2",
@@ -48,12 +50,14 @@ export function NewPost() {
     </Pressable>
   );
 
+  console.log(postStore);
+
   return (
     <>
       <Box my="10">
-        {selectedImages && (
+        {postStore.images && (
           <AspectRatio
-            key={selectedImages.id}
+            key={postStore.images.id}
             ratio={{
               base: 16 / 9,
             }}
@@ -63,7 +67,7 @@ export function NewPost() {
           >
             <Image
               source={{
-                uri: `${selectedImages.uri}`,
+                uri: `${postStore.images.uri}`,
               }}
               alt=""
             />

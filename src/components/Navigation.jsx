@@ -18,6 +18,8 @@ import Login from "../screens/Login";
 import Settings from "../screens/Settings";
 import { NewPost } from "../screens/NewPost";
 import { NewPostHeader } from "../layouts/NewPostHeader";
+import { CaptionHeader } from "../layouts/CaptionHeader";
+import { PostCaption } from "../screens/PostCaption";
 
 const HomeStack = createNativeStackNavigator();
 const NewPostStack = createNativeStackNavigator();
@@ -32,7 +34,15 @@ function NewPostNav() {
         name="New Post"
         component={NewPost}
         options={{
-          header: () => <NewPostHeader />,
+          header: ({ navigation }) => <NewPostHeader navigation={navigation} />,
+          contentStyle: { backgroundColor: colors.gray[900] },
+        }}
+      />
+      <NewPostStack.Screen
+        name="Caption"
+        component={PostCaption}
+        options={{
+          header: ({ navigation }) => <CaptionHeader navigation={navigation} />,
           contentStyle: { backgroundColor: colors.gray[900] },
         }}
       />
