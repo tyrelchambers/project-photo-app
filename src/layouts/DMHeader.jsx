@@ -1,17 +1,11 @@
 import { HStack, Icon, Text } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { CommonActions } from "@react-navigation/native";
+import { HeaderWrapper } from "./HeaderWrapper";
 
 export function DMHeader({ navigation }) {
   return (
-    <HStack
-      pt="12"
-      pb="4"
-      px="6"
-      alignItems="center"
-      justifyContent="space-between"
-      backgroundColor="gray.900"
-    >
+    <HeaderWrapper>
       <HStack alignItems="center">
         <Icon
           as={Ionicons}
@@ -35,6 +29,6 @@ export function DMHeader({ navigation }) {
           size="2xl"
         />
       </HStack>
-    </HStack>
+    </HeaderWrapper>
   );
 }

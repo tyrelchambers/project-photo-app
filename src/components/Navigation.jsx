@@ -15,10 +15,30 @@ import { MessageHeader } from "../layouts/MessageHeader";
 import { useTheme } from "native-base";
 import { Register } from "../screens/Register";
 import Login from "../screens/Login";
+import Settings from "../screens/Settings";
+import { NewPost } from "../screens/NewPost";
+import { NewPostHeader } from "../layouts/NewPostHeader";
 
 const HomeStack = createNativeStackNavigator();
-
+const NewPostStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+function NewPostNav() {
+  const { colors } = useTheme();
+
+  return (
+    <NewPostStack.Navigator initialRouteName="New Post">
+      <NewPostStack.Screen
+        name="New Post"
+        component={NewPost}
+        options={{
+          header: () => <NewPostHeader />,
+          contentStyle: { backgroundColor: colors.gray[900] },
+        }}
+      />
+    </NewPostStack.Navigator>
+  );
+}
 
 function HomeTabs() {
   const { colors } = useTheme();
@@ -35,6 +55,10 @@ function HomeTabs() {
             iconName = focused ? "search-sharp" : "search-outline";
           } else if (route.name === "Profile") {
             iconName = focused ? "person-circle" : "person-circle-outline";
+          } else if (route.name === "Settings") {
+            iconName = focused ? "settings" : "settings-outline";
+          } else if (route.name === "New Post Nav") {
+            iconName = focused ? "aperture" : "aperture-outline";
           }
 
           // You can return any component that you like here!
@@ -42,6 +66,7 @@ function HomeTabs() {
         },
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "gray",
+
         title: "",
         tabBarStyle: {
           paddingTop: 10,
@@ -67,10 +92,26 @@ function HomeTabs() {
       />
 
       <Tab.Screen
+        name="New Post Nav"
+        component={NewPostNav}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
           header: () => <ProfileHeader />,
+        }}
+      />
+
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          header: () => <NewPostHeader />,
         }}
       />
     </Tab.Navigator>
@@ -81,7 +122,7 @@ export function Navigation() {
   const { colors } = useTheme();
   return (
     <NavigationContainer>
-      <HomeStack.Navigator initialRouteName="Register">
+      <HomeStack.Navigator initialRouteName="Root_Home">
         <HomeStack.Screen
           name="Root_Home"
           component={HomeTabs}

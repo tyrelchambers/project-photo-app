@@ -25,28 +25,50 @@ export function Register({ navigation }) {
           <Stack space={5}>
             <Stack>
               <FormControl.Label>Email</FormControl.Label>
-              <Input variant="outline" p={2} color="gray.100" />
+              <Input
+                variant="outline"
+                borderColor="gray.700"
+                p={2}
+                color="gray.100"
+              />
             </Stack>
             <Stack>
               <FormControl.Label>Password</FormControl.Label>
-              <Input variant="outline" p={2} color="gray.100" type="password" />
+              <Input
+                variant="outline"
+                borderColor="gray.700"
+                p={2}
+                color="gray.100"
+                type="password"
+              />
             </Stack>
             <Stack>
               <FormControl.Label>Confirm Password</FormControl.Label>
-              <Input variant="outline" p={2} color="gray.100" type="password" />
+              <Input
+                variant="outline"
+                borderColor="gray.700"
+                p={2}
+                color="gray.100"
+                type="password"
+              />
             </Stack>
+            <Text
+              color="indigo.400"
+              onPress={() => navigation.navigate("Forgot Password")}
+              textAlign="right"
+            >
+              Forgot password?
+            </Text>
             <Button backgroundColor="red.400">Sign up</Button>
-            <Box>
-              <Text color="gray.300">
-                I have an account!{" "}
-                <Text
-                  color="blue.300"
-                  onPress={() => navigation.navigate("Login")}
-                >
-                  Login{" "}
-                </Text>
+            <Text color="gray.300">
+              I have an account!{" "}
+              <Text
+                color="indigo.400"
+                onPress={() => navigation.navigate("Login")}
+              >
+                Login{" "}
               </Text>
-            </Box>
+            </Text>
             <Divider />
           </Stack>
         </FormControl>

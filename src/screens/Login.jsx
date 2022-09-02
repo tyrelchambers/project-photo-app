@@ -26,11 +26,17 @@ const Login = ({ navigation }) => {
           <Stack space={5}>
             <Stack>
               <FormControl.Label>Email</FormControl.Label>
-              <Input variant="outline" p={2} />
+              <Input variant="outline" borderColor="gray.700" p={2} />
             </Stack>
             <Stack>
               <FormControl.Label>Password</FormControl.Label>
-              <Input variant="outline" p={2} color="gray.100" type="password" />
+              <Input
+                variant="outline"
+                borderColor="gray.700"
+                p={2}
+                color="gray.100"
+                type="password"
+              />
             </Stack>
 
             <Button backgroundColor="red.400">Login</Button>
@@ -45,7 +51,11 @@ const Login = ({ navigation }) => {
                 </Text>
               </Text>
             </Box>
-            <Divider />
+            <Divider
+              backgroundColor="gray.700"
+              color="gray.700"
+              borderColor="gray.700"
+            />
           </Stack>
         </FormControl>
       </VStack>
