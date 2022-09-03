@@ -1,25 +1,24 @@
-import { AspectRatio, Box, FlatList, Image, Text } from "native-base";
+import { AspectRatio, Box, Center, FlatList, Image, Text } from "native-base";
 import * as MediaLibrary from "expo-media-library";
 import { useEffect, useState } from "react";
 import { Pressable } from "react-native";
 import { useNewPostStore } from "../hooks/useNewPostStore";
+import { useMediaLibrary } from "../hooks/useMediaLibrary";
+import { manipulateAsync, FlipType, SaveFormat } from "expo-image-manipulator";
+import { NewPostImagePreview } from "../components/NewPostImagePreview";
 
 export function NewPost() {
   const [status, requestPermission] = MediaLibrary.usePermissions();
-  const [photos, setPhotos] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
+  const { photos } = useMediaLibrary();
+
   const postStore = useNewPostStore();
 
   useEffect(() => {
-    (async () => {
-      const allPhotos = await MediaLibrary.getAssetsAsync({
-        mediaType: ["photo"],
-      });
-
-      setPhotos(allPhotos.assets);
-      postStore.setImages(allPhotos.assets[0]);
-    })();
-  }, []);
+    if (photos) {
+      console.log(photos[0]);
+      postStore.setImages(photos[0]);
+    }
+  }, [photos]);
 
   if (status && !status.granted && status.canAskAgain) {
     requestPermission();
@@ -50,30 +49,11 @@ export function NewPost() {
     </Pressable>
   );
 
-  console.log(postStore);
+  console.log(postStore.images);
 
   return (
     <>
-      <Box my="10">
-        {postStore.images && (
-          <AspectRatio
-            key={postStore.images.id}
-            ratio={{
-              base: 16 / 9,
-            }}
-            w="full"
-            borderColor="gray.900"
-            borderWidth="2"
-          >
-            <Image
-              source={{
-                uri: `${postStore.images.uri}`,
-              }}
-              alt=""
-            />
-          </AspectRatio>
-        )}
-      </Box>
+      <Box my="10">{postStore.images && <NewPostImagePreview />}</Box>
       {photos && (
         <FlatList
           numColumns={4}
@@ -85,5 +65,3 @@ export function NewPost() {
     </>
   );
 }
-
-// {"creationTime": 1522437259365, "duration": 0, "filename": "IMG_0006.HEIC", "height": 3024, "id": "CC95F08C-88C3-4012-9D6D-64A413D254B3/L0/001", "mediaSubtypes": ["hdr"], "mediaType": "photo", "modificationTime": 1662070040589, "uri": "ph://CC95F08C-88C3-4012-9D6D-64A413D254B3", "width": 4032}, {"creationTime": 1344462930400, "duration": 0, "filename": "IMG_0005.JPG", "height": 2002, "id": "ED7AC36B-A150-4C38-BB8C-B6D696F4F2ED/L0/001", "mediaSubtypes": [], "mediaType": "photo", "modificationTime": 1441224148000, "uri": "ph://ED7AC36B-A150-4C38-BB8C-B6D696F4F2ED", "width": 3000}
